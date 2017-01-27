@@ -1,0 +1,17 @@
+{
+    "development": {
+        "username": "didit",
+        "password": "123456",
+        "database": "votedb",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+
+    "production": {
+        "username": "didit",
+        "password": "123456",
+        "database": "votedb",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    }
+}

@@ -1,0 +1,76 @@
+<!-- views/pages/registration.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title"></h1>
+            <div class="account-wall">
+              <p>Vote Acara Favorite Anda</p>
+              <table class="table table-bordered">
+                <thead>
+                  <tr class="success">
+                    <th>Program Acara</th>
+                    <th>Deskripsi Acara</th>
+                    <th>Rate Vote</th>
+                    <th>Vote</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% result.forEach(function(val){ %>
+                  <tr class="active">
+                    <td><%= val.acara %></td>
+                    <td><a href="<%= val.deskripsi %>"><%= val.deskripsi %></a></td>
+                    <td><%= val.vote %></td>
+                    <td><a href="/../rcti/upvote/<%= val.id %>" class="btn btn-success">Up</a><a href="/../rcti/downvote/<%= val.id %>" class="btn btn-warning">Down</a></td>
+                    <% }) %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title"></h1>
+            <div class="account-wall">
+              <p>Komentar</p>
+              <table class="table table-bordered">
+                <% comment.forEach(function(val){ %>
+                <thead>
+                  <tr class="success">
+                    <th>Anonymous</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                   <th><%= val.isi_komentar %></th>
+                 </tr>
+                </tbody>
+                <% }) %>
+              </table>
+            </div>
+            <div class="form-submit">
+              <form id="user-form" action="/../rcti/addcomment" method="post">
+                <div class="form-group">
+                  <label for="comment">komentar anda disini</label>
+                  <input type="text" class="form-control" name="comment" placeholder="komentar"/>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+    </div>
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>
